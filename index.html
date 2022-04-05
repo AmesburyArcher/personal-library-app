@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Library</title>
+</head>
+<body>
+    <div id="header">
+        <h1 class="title">My Personal Library</h1>
+    </div>
+
+    <div id="main">
+        <button class="add-book-btn" type="button">Add Book</button>
+       
+    </div>
+
+    <div id="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+                <form class="book-info">
+                    <label for="title-name">Title of Book</label>
+                    <input type="text" id="title-name">
+                    <label for="author-name">Name of Author</label>
+                    <input type="text" id="author-name">
+                    <label for="num-pages">Number of Pages in Book</label>
+                    <input type="number" id="num-pages">
+                    
+                    <label for="num-pages-read">Number of Pages Read</label>
+                    <input type="number" id="num-pages-read">
+                    
+                    <button class="submit-book" type="button">Submit Book</button>
+                </form>
+        </div>
+    </div>
+
+    <div id="tracker">
+
+    </div>
+
+    <div id="footer">
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
