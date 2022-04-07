@@ -34,7 +34,7 @@ function addBookToLibrary(ev) {
         let read = document.querySelector('#num-pages-read').value
 
         let book = new Book(title, author, pages, read)
-        if(title.value && author.value && pages.value && read.value) {
+        if(title && author && pages && read) {
             myLibrary.push(book);
              // takes the property values from book object and displays it on the DOM in a book card    
             const bookHolder = document.querySelector('#book-holder');
@@ -68,11 +68,6 @@ function addBookToLibrary(ev) {
 
 };
 
-
-// const deleteBookBtn = document.querySelector('.delete-book');
-// deleteBookBtn.addEventListener('click', (e) => {
-
-// })
 
 
 
