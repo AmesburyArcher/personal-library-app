@@ -68,6 +68,16 @@ function addBookToLibrary(ev) {
 
 };
 
+// delete book from DOM **need to add delete from array functionality
+const libraryDisplay = document.querySelector('#main');
+libraryDisplay.addEventListener('click', deleteBook);
+
+function deleteBook(e) {
+    if(e.target.matches('.delete-book')) {
+        e.target.parentNode.remove();
+    }
+}
+
 
 
 

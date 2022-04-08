@@ -11,18 +11,37 @@ body {
     display: grid;
     grid-template-rows: 0.5fr 5.5fr 0.25fr;
     grid-template-columns: 3fr 1fr;
+    height: 100vh;
 }
 
 #header {
     background-color: #333;
     grid-column: 1 / 3;
+
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+h1.title {
+    color: #fefefe;
 }
 
 #main {
-    height: 100vh;
     background-color: rgb(188, 188, 188);
     padding: 2rem;
     border: black 1px solid;
+    overflow: scroll;
+}
+
+#main .add-book-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: gold;
+    color: #fefefe;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 #book-holder {
@@ -60,10 +79,16 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fefefe;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(188, 188, 188);
     border: 1px solid black;
-    height: 300px;
-    width: 200px;
+    border-radius: 10px;
+    height: 350px;
+    width: 250px;
+    padding: 1rem;
 }
 
 .book-info {
@@ -71,18 +96,45 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
+}
+
+.book-info input {
+    border: none;
+    border-radius: 10px;
+    height: 1.25rem;
+    width: 25ch;
+    padding: 4px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #modal .close-modal {
-    color: #aaa;
+    color: #333;
     font-size: 28px;
-    float: right;
-    padding: 0.5rem;
+    align-self: flex-start;
 }
 
 #modal .close-modal:hover {
     cursor: pointer;
     transform: scale(1.03);
+}
+
+#modal .submit-book {
+    margin-top: 1rem;
+    padding: 0.25rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #333;
+    color: #fefefe;
+}
+
+#modal .submit-book:hover {
+    cursor: pointer;
 }
 
 #tracker {
