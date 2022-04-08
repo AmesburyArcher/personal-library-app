@@ -1,5 +1,6 @@
 let myLibrary = [];
 
+//Modal functionality
 const modal = document.querySelector('#modal');
 
 const addBookBtn = document.querySelector('.add-book-btn');
@@ -9,11 +10,14 @@ function addBookInfo() {
     modal.classList.add('active');  
 }
 
-const closeModal = document.querySelector('.close-modal')
-closeModal.addEventListener('click', function() {
-    modal.classList.remove('active')
-});
+const closeModalBtn = document.querySelector('.close-modal')
+closeModalBtn.addEventListener('click', closeModal);
 
+function closeModal() {
+    modal.classList.remove('active')
+};
+
+//Constructor function
 function Book(title, author, pages, read) {
     this.title = title
     this.author = author
@@ -21,6 +25,7 @@ function Book(title, author, pages, read) {
     this.read = read
 };
 
+//Book submition functionality
 const submitBookBtn = document.querySelector('.submit-book');
 submitBookBtn.addEventListener('click', addBookToLibrary);
 
@@ -62,6 +67,7 @@ function addBookToLibrary(ev) {
 
             console.log(myLibrary);
             document.querySelector('.book-info').reset();
+            closeModal();
         } else {
             alert('You must enter all fields');
         }
@@ -74,7 +80,12 @@ libraryDisplay.addEventListener('click', deleteBook);
 
 function deleteBook(e) {
     if(e.target.matches('.delete-book')) {
-        e.target.parentNode.remove();
+       let delBook = e.target.parentNode;
+       delBook.remove();
+       let bookTitle = e.target.parentNode.children.item(1);
+       console.log(bookTitle);
+
+
     }
 }
 
