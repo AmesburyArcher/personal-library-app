@@ -46,6 +46,7 @@ function addBookToLibrary(ev) {
             const createCard = document.createElement('div');
             const deleteBtn = document.createElement('p');
             const bookTitle = document.createElement('p');
+            const bookTitleWrapper = document.createElement('span');
             const bookAuthor = document.createElement('p');
             const bookTotalPages = document.createElement('p');
             const bookPagesRead = document.createElement('p');
@@ -53,7 +54,8 @@ function addBookToLibrary(ev) {
             deleteBtn.classList.add('delete-book');
             deleteBtn.textContent = 'x';
             createCard.classList.add('book-card');
-            bookTitle.textContent = "Title: " + title;
+            bookTitle.textContent = "Title: ";
+            bookTitleWrapper.textContent = title;
             bookAuthor.textContent = "Author: " + author;
             bookTotalPages.textContent = "Total Pages in Book: " + pages;
             bookPagesRead.textContent = "Total Pages Read: " + read;
@@ -61,6 +63,7 @@ function addBookToLibrary(ev) {
             bookHolder.appendChild(createCard);
             createCard.appendChild(deleteBtn);
             createCard.appendChild(bookTitle);
+            bookTitle.appendChild(bookTitleWrapper);
             createCard.appendChild(bookAuthor);
             createCard.appendChild(bookTotalPages);
             createCard.appendChild(bookPagesRead);
@@ -74,20 +77,20 @@ function addBookToLibrary(ev) {
 
 };
 
-// delete book from DOM **need to add delete from array functionality
+// delete book from DOM and myLibrary Array
 const libraryDisplay = document.querySelector('#main');
 libraryDisplay.addEventListener('click', deleteBook);
 
 function deleteBook(e) {
     if(e.target.matches('.delete-book')) {
-       let delBook = e.target.parentNode;
-       delBook.remove();
-       let bookTitle = e.target.parentNode.children.item(1);
-       console.log(bookTitle);
-
-
+        let delBook = e.target.parentNode;
+        delBook.remove();
+        let bookTitle = e.target.parentNode.children.item(1).children.item(0).textContent;
+        let i = myLibrary.map(a => a.title).indexOf(bookTitle);
+        myLibrary.splice(i, 1);
     }
 }
+
 
 
 
