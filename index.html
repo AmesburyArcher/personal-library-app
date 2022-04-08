@@ -26,20 +26,20 @@
                 <form class="book-info">
                     <div>
                         <label for="title-name">Title of Book</label>
-                        <input type="text" id="title-name">
+                        <input type="text" id="title-name" placeholder="To Kill a Mockingbird" required>
                     </div>
                     <div>
                         <label for="author-name">Name of Author</label>
-                        <input type="text" id="author-name">
+                        <input type="text" id="author-name" placeholder="Harper Lee" required>
                     </div>
                     <div>
                         <label for="num-pages">Number of Pages in Book</label>
-                        <input type="number" id="num-pages">
+                        <input type="number" id="num-pages" max="10000" placeholder="281" required>
                     </div>
                     
                     <div>
-                        <label for="num-pages-read">Number of Pages Read</label>
-                        <input type="number" id="num-pages-read">
+                        <label for="read-status">Read Status</label>
+                        <input type="checkbox" id="read-status" max="10000" placeholder="255" required>
                     </div>
                     
                     <button class="submit-book" type="button">Submit Book</button>
@@ -48,11 +48,24 @@
     </div>
 
     <div id="tracker">
-
+        <div class="stat-tracker-container">
+            <p>
+                Books on List: <span></span>
+            </p>
+            <p>
+                Pages on List: <span></span>
+            </p>
+            <p>
+                Books Read: <span></span>
+            </p>
+            <p>
+                Pages Read: <span></span>
+            </p>
+        </div>
     </div>
 
     <div id="footer">
-
+        Created by AmesburyArcher 2022
     </div>
 <script src="script.js"></script>
 </body>

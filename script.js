@@ -36,11 +36,10 @@ function addBookToLibrary(ev) {
         let title = document.querySelector('#title-name').value;
         let author = document.querySelector('#author-name').value;
         let pages = document.querySelector('#num-pages').value;
-        let read = document.querySelector('#num-pages-read').value
+        let read = getReadValue();
 
         let book = new Book(title, author, pages, read)
-        if(title && author && pages && read) {
-            myLibrary.push(book);
+        if(title && author && pages) {
              // takes the property values from book object and displays it on the DOM in a book card    
             const bookHolder = document.querySelector('#book-holder');
             const createCard = document.createElement('div');
@@ -49,7 +48,8 @@ function addBookToLibrary(ev) {
             const bookTitleWrapper = document.createElement('span');
             const bookAuthor = document.createElement('p');
             const bookTotalPages = document.createElement('p');
-            const bookPagesRead = document.createElement('p');
+            const bookReadStatus = document.createElement('button');
+            bookReadStatus.classList.add('book-read-status');
 
             deleteBtn.classList.add('delete-book');
             deleteBtn.textContent = 'x';
@@ -58,7 +58,6 @@ function addBookToLibrary(ev) {
             bookTitleWrapper.textContent = title;
             bookAuthor.textContent = "Author: " + author;
             bookTotalPages.textContent = "Total Pages in Book: " + pages;
-            bookPagesRead.textContent = "Total Pages Read: " + read;
 
             bookHolder.appendChild(createCard);
             createCard.appendChild(deleteBtn);
@@ -66,9 +65,26 @@ function addBookToLibrary(ev) {
             bookTitle.appendChild(bookTitleWrapper);
             createCard.appendChild(bookAuthor);
             createCard.appendChild(bookTotalPages);
-            createCard.appendChild(bookPagesRead);
+            createCard.appendChild(bookReadStatus);
+            if(book.read === false) {
+                bookReadStatus.textContent = 'Not Read';
+                bookReadStatus.style.backgroundColor = 'red';
+            } else {
+                bookReadStatus.textContent = 'Read';
+                bookReadStatus.style.backgroundColor = 'green';
+            }
+            bookReadStatus.addEventListener('click', () => {
+                book.read = !book.read;
+                if(book.read) {
+                    bookReadStatus.textContent = 'Read';
+                    bookReadStatus.style.backgroundColor = 'green';
+                } else {
+                    bookReadStatus.textContent = 'Not Read';
+                    bookReadStatus.style.backgroundColor = 'red';
+                }
+            })
 
-            console.log(myLibrary);
+            myLibrary.push(book);
             document.querySelector('.book-info').reset();
             closeModal();
         } else {
@@ -91,6 +107,11 @@ function deleteBook(e) {
     }
 }
 
+// check if book is read from input
+function getReadValue() {
+    if(document.querySelector('input[type=checkbox]:checked')) return true;
+    else return false;
+};
 
 
 
