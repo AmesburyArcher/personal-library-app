@@ -1,5 +1,10 @@
 let myLibrary = [];
 
+let booksOnListDOM = '';
+let pagesOnListDOM = '';
+let booksReadDOM = '';
+let pagesReadDOM = '';
+
 //Modal functionality
 const modal = document.querySelector('#modal');
 
@@ -84,6 +89,7 @@ function addBookToLibrary(ev) {
                 }
                 calculateBooksRead();
                 calculatePagesRead();
+                displayStats();
             })
 
             myLibrary.push(book);
@@ -93,6 +99,7 @@ function addBookToLibrary(ev) {
             calculatePagesOnList();
             calculateBooksRead();
             calculatePagesRead();
+            displayStats();
         } else {
             alert('You must enter all fields');
         }
@@ -114,6 +121,7 @@ function deleteBook(e) {
         calculatePagesOnList();
         calculateBooksRead();
         calculatePagesRead();
+        displayStats();
     }
 };
 
@@ -127,13 +135,13 @@ function getReadValue() {
 function calculateBooksOnList() {
    let titles = myLibrary.map(a => a.title);
    console.log("books on list:" + titles.length)
-   return titles.length;
+   booksOnListDOM = titles.length;
 };
 
 function calculatePagesOnList() {
     let pages = myLibrary.map(a => parseInt(a.pages)).reduce((b, a) => b + a, 0);
     console.log("pages on list:" + pages);
-    return pages;
+    pagesOnListDOM = pages;
 };
 
 function calculateBooksRead() {
@@ -141,7 +149,7 @@ function calculateBooksRead() {
        return a.read === true;
     })
     console.log("books read:" + booksRead.length);
-    return booksRead.length;
+    booksReadDOM = booksRead.length;
 };
 
 function calculatePagesRead() {
@@ -149,8 +157,20 @@ function calculatePagesRead() {
     .map(a => parseInt(a.pages))
     .reduce((b, a) => b + a, 0);
     console.log("pages read:" + pagesRead);
-    return pagesRead;
+    pagesReadDOM = pagesRead;
 };
+
+function displayStats() {
+    const booksOnListSpan = document.querySelector('.books-on-list')
+    const pagesOnlistSpan = document.querySelector('.pages-on-list');
+    const booksReadSpan = document.querySelector('.books-read');
+    const pagesReadSpan = document.querySelector('.pages-read');
+
+    booksOnListSpan.textContent = booksOnListDOM;
+    pagesOnlistSpan.textContent = pagesOnListDOM;
+    booksReadSpan.textContent = booksReadDOM;
+    pagesReadSpan.textContent = pagesReadDOM;
+}
 
 
 

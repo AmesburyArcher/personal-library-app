@@ -139,6 +139,10 @@ h1.title {
     gap: 1rem;
 }
 
+input[type=checkbox] {
+    width:fit-content;
+}
+
 .book-info input {
     border: none;
     border-radius: 10px;
