@@ -8,13 +8,13 @@ addBookBtn.addEventListener('click', addBookInfo);
 
 function addBookInfo() {
     modal.classList.add('active');  
-}
+};
 
 const closeModalBtn = document.querySelector('.close-modal')
 closeModalBtn.addEventListener('click', closeModal);
 
 function closeModal() {
-    modal.classList.remove('active')
+    modal.classList.remove('active');
 };
 
 //Constructor function
@@ -82,11 +82,17 @@ function addBookToLibrary(ev) {
                     bookReadStatus.textContent = 'Not Read';
                     bookReadStatus.style.backgroundColor = 'red';
                 }
+                calculateBooksRead();
+                calculatePagesRead();
             })
 
             myLibrary.push(book);
             document.querySelector('.book-info').reset();
             closeModal();
+            calculateBooksOnList();
+            calculatePagesOnList();
+            calculateBooksRead();
+            calculatePagesRead();
         } else {
             alert('You must enter all fields');
         }
@@ -104,14 +110,50 @@ function deleteBook(e) {
         let bookTitle = e.target.parentNode.children.item(1).children.item(0).textContent;
         let i = myLibrary.map(a => a.title).indexOf(bookTitle);
         myLibrary.splice(i, 1);
+        calculateBooksOnList();
+        calculatePagesOnList();
+        calculateBooksRead();
+        calculatePagesRead();
     }
-}
+};
 
 // check if book is read from input
 function getReadValue() {
     if(document.querySelector('input[type=checkbox]:checked')) return true;
     else return false;
 };
+
+//Book stats functions
+function calculateBooksOnList() {
+   let titles = myLibrary.map(a => a.title);
+   console.log("books on list:" + titles.length)
+   return titles.length;
+};
+
+function calculatePagesOnList() {
+    let pages = myLibrary.map(a => parseInt(a.pages)).reduce((b, a) => b + a, 0);
+    console.log("pages on list:" + pages);
+    return pages;
+};
+
+function calculateBooksRead() {
+    const booksRead = myLibrary.filter(a => {
+       return a.read === true;
+    })
+    console.log("books read:" + booksRead.length);
+    return booksRead.length;
+};
+
+function calculatePagesRead() {
+    const pagesRead = myLibrary.filter(({read}) => read === true)
+    .map(a => parseInt(a.pages))
+    .reduce((b, a) => b + a, 0);
+    console.log("pages read:" + pagesRead);
+    return pagesRead;
+};
+
+
+
 
 
 
