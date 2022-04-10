@@ -57,10 +57,12 @@ function addBookToLibrary(ev) {
             bookReadStatus.classList.add('book-read-status');
 
             deleteBtn.classList.add('delete-book');
-            deleteBtn.textContent = 'x';
+            deleteBtn.textContent = 'X';
             createCard.classList.add('book-card');
+            bookTitle.classList.add('book-title');
             bookTitle.textContent = "Title: ";
             bookTitleWrapper.textContent = title;
+            bookAuthor.classList.add('book-author')
             bookAuthor.textContent = "Author: " + author;
             bookTotalPages.textContent = "Total Pages in Book: " + pages;
 

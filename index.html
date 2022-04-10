@@ -26,11 +26,11 @@
                 <form class="book-info">
                     <div>
                         <label for="title-name">Title of Book</label>
-                        <input type="text" id="title-name" placeholder="To Kill a Mockingbird" required>
+                        <input type="text" id="title-name" placeholder="To Kill a Mockingbird" maxlength="30" required>
                     </div>
                     <div>
                         <label for="author-name">Name of Author</label>
-                        <input type="text" id="author-name" placeholder="Harper Lee" required>
+                        <input type="text" id="author-name" placeholder="Harper Lee" maxlength="30" required>
                     </div>
                     <div>
                         <label for="num-pages">Number of Pages in Book</label>
@@ -38,7 +38,7 @@
                     </div>
                     
                     <div>
-                        <label for="read-status">Read Status</label>
+                        <label for="read-status" class="label-read-status">Read Status</label>
                         <input type="checkbox" id="read-status" max="10000" placeholder="255" required>
                     </div>
                     
